@@ -2,5 +2,5 @@
 
 docker login
 
-docker push wooruang/caffe-ssd:ubuntu18.04-cuda10.1-cudnn7
+docker push wooruang/caffe-ssd:ubuntu18.04-cuda9.2-cudnn7
 

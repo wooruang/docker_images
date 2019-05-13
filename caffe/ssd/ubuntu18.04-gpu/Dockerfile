@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04 
+FROM nvidia/cuda:9.2-cudnn7-devel-ubuntu18.04
 LABEL maintainer="wooruang@gmail.com"
 
 RUN apt update && apt install -y build-essential curl wget git python-dev python-pip
@@ -12,7 +12,7 @@ RUN tar xzf cmake-3.14.3-Linux-x86_64.tar.gz
 ENV PATH "$PATH:/cmake-3.14.3-Linux-x86_64/bin"
 
 # Clone a repository of ssd of cafffe.
-RUN git clone https://github.com/weiliu89/caffe.git
+RUN git clone https://github.com/wooruang/caffe.git
 WORKDIR /caffe
 RUN git checkout ssd
 
@@ -23,3 +23,4 @@ RUN mkdir build
 WORKDIR /caffe/build
 RUN cmake -DCMAKE_BUILD_TYPE=Release .. && make -j8
 
+ENV PYTHONPATH "$PYTHONPATH:/caffe/python"
