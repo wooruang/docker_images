@@ -17,7 +17,6 @@ WORKDIR /caffe
 RUN git checkout ssd
 
 # Build caffe.
-RUN env
 RUN pip install -r /caffe/python/requirements.txt
 RUN mkdir build
 WORKDIR /caffe/build
