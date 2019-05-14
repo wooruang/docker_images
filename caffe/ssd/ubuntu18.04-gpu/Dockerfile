@@ -16,7 +16,13 @@ RUN git clone https://github.com/wooruang/caffe.git
 WORKDIR /caffe
 RUN git checkout ssd
 
+# Download pretrained VGGNet.
+RUN mkdir -p /caffe/models/VGGNet
+WORKDIR /caffe/models/VGGNet
+RUN wget http://cs.unc.edu/~wliu/projects/ParseNet/VGG_ILSVRC_16_layers_fc_reduced.caffemodel
+
 # Build caffe.
+WORKDIR /caffe
 RUN pip install -r /caffe/python/requirements.txt
 RUN mkdir build
 WORKDIR /caffe/build
